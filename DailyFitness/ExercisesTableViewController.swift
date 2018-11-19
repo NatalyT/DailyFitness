@@ -15,6 +15,7 @@ class ExercisesTableViewController: UITableViewController {
     var musclesList = [Muscle]()
     var categoriesList = [Category]()
     var equipmentList = [Item]()
+    var exercisesList = [Exercise]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +33,12 @@ class ExercisesTableViewController: UITableViewController {
         if let e = Equipment.fetchJson() {
             equipmentList = e.results ?? []
         }
-        print(equipmentList)
+//        print(equipmentList)
+        
+        if let ex = Exercises.fetchJson() {
+            exercisesList = ex.results
+        }
+        print(exercisesList)
     }
 
     // MARK: - Table view data source
