@@ -19,45 +19,49 @@ struct ExerciseInfo {
 
 class ExercisesTableViewController: UITableViewController {
     
+    private let exercisesURL = "https://wger.de/api/v2/exercise/?format=json&status=2"
     private let reuseIdentifier = "exerciseCell"
     var placeholder = UIImage(named: "placeholder")
+    var fetchingMore = false
     
     var musclesList = [Muscle]()
     var categoriesList = [Category]()
     var equipmentList = [Item]()
     var exercisesList = [Exercise]()
     var exercises = [ExerciseInfo]()
-
+    var nextExercisesURL = String()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         fetchJSONData()
-        getExerciseInfo()
+        fetchExercisesJSONData(exercisesURL: exercisesURL)
+        getExerciseInfo(exercisesList: exercisesList)
     }
     
     func fetchJSONData() {
         if let m = Muscles.fetchJson() {
             musclesList = m.results ?? []
         }
-        //        print(musclesList)
         
         if let c = Categories.fetchJson() {
             categoriesList = c.results ?? []
         }
-        //        print(categoriesList)
         
         if let e = Equipment.fetchJson() {
             equipmentList = e.results ?? []
         }
-        //        print(equipmentList)
-        
-        if let ex = Exercises.fetchJson() {
-            exercisesList = ex.results
-        }
-//        print(exercisesList)
     }
     
-    func getExerciseInfo() {
+    func fetchExercisesJSONData(exercisesURL: String) {
+        if let ex = Exercises.fetchJson(exercisesURL: exercisesURL) {
+            exercisesList = ex.results
+            nextExercisesURL = ex.next ?? ""
+        }
+        //        print(exercisesList)
+    }
+    
+    func getExerciseInfo(exercisesList: [Exercise]) {
         for ex in exercisesList {
             let category = categoriesList.first (where: { $0.id == ex.category })
             let newExercise = ExerciseInfo(id: ex.id ?? 0, category: category?.name ?? "", name: ex.name ?? "", equipment: getEquipmentList(equipment: ex.equipment!), muscles: getMusclesList(muscles: ex.muscles!), imageURL: getImageURL(exerciseId: ex.id!))
@@ -94,17 +98,17 @@ class ExercisesTableViewController: UITableViewController {
         }
         return ""
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return exercises.count
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! ExerciseTableViewCell
         cell.categoryLabel.text = exercises[indexPath.row].category
@@ -115,4 +119,25 @@ class ExercisesTableViewController: UITableViewController {
         return cell
     }
     
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        
+        if offsetY > contentHeight - scrollView.frame.height * 4 {
+            if !fetchingMore {
+                beginFetching()
+            }
+        }
+    }
+    
+    func beginFetching() {
+        fetchingMore = true
+        
+        DispatchQueue.main.asyncAfter(deadline: .now(), execute: {
+            self.fetchExercisesJSONData(exercisesURL: self.nextExercisesURL)
+            self.getExerciseInfo(exercisesList: self.exercisesList)
+            self.fetchingMore = false
+            self.tableView.reloadData()
+        })
+    }
 }

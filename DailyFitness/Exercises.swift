@@ -8,8 +8,6 @@
 
 import Foundation
 
-private let exercisesURL = "https://wger.de/api/v2/exercise/?format=json&status=2"
-
 struct Exercise: Codable {
     var id: Int?
     var license_autor: String?
@@ -33,7 +31,7 @@ struct Exercises: Codable {
     var previous: String?
     var results: [Exercise]
     
-    static func fetchJson() -> Exercises? {
+    static func fetchJson(exercisesURL: String) -> Exercises? {
         if let url = URL(string: exercisesURL) {
             do {
                 let data = try Data(contentsOf: url)
