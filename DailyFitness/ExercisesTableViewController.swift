@@ -92,11 +92,16 @@ class ExercisesTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return exercises.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! ExerciseTableViewCell
+        cell.categoryLabel.text = exercises[indexPath.row].category
+        cell.nameLabel.text = exercises[indexPath.row].name
+        cell.musclesLabel.text = exercises[indexPath.row].muscles
+        cell.equipmentLabel.text = exercises[indexPath.row].equipment
+        cell.exerciseImageView.image = UIImage(named: "placeholder")
         return cell
     }
 
