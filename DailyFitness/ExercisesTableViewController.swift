@@ -11,10 +11,16 @@ import UIKit
 class ExercisesTableViewController: UITableViewController {
     
     private let reuseIdentifier = "exerciseCell"
+    
+    var musclesList = [Muscle]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if let w = Muscles.fetchJson() {
+            musclesList = w.results!
+        }
+        print(musclesList)
     }
 
     // MARK: - Table view data source
