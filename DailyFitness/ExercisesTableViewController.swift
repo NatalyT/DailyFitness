@@ -20,6 +20,7 @@ struct ExerciseInfo {
 class ExercisesTableViewController: UITableViewController {
     
     private let reuseIdentifier = "exerciseCell"
+    var placeholder = UIImage(named: "placeholder")
     
     var musclesList = [Muscle]()
     var categoriesList = [Category]()
@@ -59,7 +60,7 @@ class ExercisesTableViewController: UITableViewController {
     func getExerciseInfo() {
         for ex in exercisesList {
             let category = categoriesList.first (where: { $0.id == ex.category })
-            let newExercise = ExerciseInfo(id: ex.id ?? 0, category: category?.name ?? "", name: ex.name ?? "", equipment: getEquipmentList(equipment: ex.equipment!), muscles: getMusclesList(muscles: ex.muscles!), imageURL: "")
+            let newExercise = ExerciseInfo(id: ex.id ?? 0, category: category?.name ?? "", name: ex.name ?? "", equipment: getEquipmentList(equipment: ex.equipment!), muscles: getMusclesList(muscles: ex.muscles!), imageURL: getImageURL(exerciseId: ex.id!))
             exercises.append(newExercise)
         }
         print(exercises)
@@ -84,6 +85,15 @@ class ExercisesTableViewController: UITableViewController {
         }
         return String(equipmentNamesString.dropLast(2))
     }
+    
+    private func getImageURL(exerciseId: Int) -> String {
+        if let images = Images.fetchJson(exerciseId: exerciseId) {
+            if images.results!.count > 0 {
+                return images.results![0].image ?? ""
+            }
+        }
+        return ""
+    }
 
     // MARK: - Table view data source
 
@@ -101,53 +111,8 @@ class ExercisesTableViewController: UITableViewController {
         cell.nameLabel.text = exercises[indexPath.row].name
         cell.musclesLabel.text = exercises[indexPath.row].muscles
         cell.equipmentLabel.text = exercises[indexPath.row].equipment
-        cell.exerciseImageView.image = UIImage(named: "placeholder")
+        cell.exerciseImageView.loadAsyncFrom(url: exercises[indexPath.row].imageURL, placeholder: placeholder)
         return cell
     }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
 }

@@ -13,6 +13,8 @@
 		C15D68EA21A2FCCE00CE1722 /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15D68E921A2FCCE00CE1722 /* Categories.swift */; };
 		C15D68EC21A3003400CE1722 /* Equipment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15D68EB21A3003400CE1722 /* Equipment.swift */; };
 		C15D68EE21A3185B00CE1722 /* Exercises.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15D68ED21A3185B00CE1722 /* Exercises.swift */; };
+		C15D68F021A32F9D00CE1722 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15D68EF21A32F9D00CE1722 /* UIImageView.swift */; };
+		C15D68F221A3311900CE1722 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15D68F121A3311900CE1722 /* Images.swift */; };
 		C1A0FB0721A2F0D8007A30E8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A0FB0621A2F0D8007A30E8 /* AppDelegate.swift */; };
 		C1A0FB0C21A2F0D8007A30E8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1A0FB0A21A2F0D8007A30E8 /* Main.storyboard */; };
 		C1A0FB0E21A2F0DA007A30E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1A0FB0D21A2F0DA007A30E8 /* Assets.xcassets */; };
@@ -45,6 +47,8 @@
 		C15D68E921A2FCCE00CE1722 /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
 		C15D68EB21A3003400CE1722 /* Equipment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Equipment.swift; sourceTree = "<group>"; };
 		C15D68ED21A3185B00CE1722 /* Exercises.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercises.swift; sourceTree = "<group>"; };
+		C15D68EF21A32F9D00CE1722 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
+		C15D68F121A3311900CE1722 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		C1A0FB0321A2F0D8007A30E8 /* DailyFitness.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyFitness.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1A0FB0621A2F0D8007A30E8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1A0FB0B21A2F0D8007A30E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -118,6 +122,8 @@
 				C15D68E921A2FCCE00CE1722 /* Categories.swift */,
 				C15D68EB21A3003400CE1722 /* Equipment.swift */,
 				C15D68ED21A3185B00CE1722 /* Exercises.swift */,
+				C15D68EF21A32F9D00CE1722 /* UIImageView.swift */,
+				C15D68F121A3311900CE1722 /* Images.swift */,
 			);
 			path = DailyFitness;
 			sourceTree = "<group>";
@@ -271,9 +277,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C15D68F021A32F9D00CE1722 /* UIImageView.swift in Sources */,
 				C15D68EC21A3003400CE1722 /* Equipment.swift in Sources */,
 				C15D68E821A2F7D700CE1722 /* Muscles.swift in Sources */,
 				C15D68E621A2F45400CE1722 /* ExerciseTableViewCell.swift in Sources */,
+				C15D68F221A3311900CE1722 /* Images.swift in Sources */,
 				C15D68EE21A3185B00CE1722 /* Exercises.swift in Sources */,
 				C1A0FB0721A2F0D8007A30E8 /* AppDelegate.swift in Sources */,
 				C15D68E321A2F1CB00CE1722 /* ExercisesTableViewController.swift in Sources */,
