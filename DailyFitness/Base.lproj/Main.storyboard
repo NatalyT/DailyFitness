@@ -18,13 +18,73 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="exerciseCell" id="JuJ-zN-78B">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="exerciseCell" rowHeight="147" id="JuJ-zN-78B" customClass="ExerciseTableViewCell" customModule="DailyFitness" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="147"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JuJ-zN-78B" id="glF-b0-PIQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JuJ-zN-78B" id="glF-b0-PIQ">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="146.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="F52-Rj-dwr">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="128" id="TkC-rI-7kl"/>
+                                                <constraint firstAttribute="height" constant="128" id="aUb-ed-tUG"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TU9-Cu-BPY">
+                                            <rect key="frame" x="136" y="4" width="239" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8LA-ee-62S">
+                                            <rect key="frame" x="136" y="29" width="239" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IDZ-3D-09C">
+                                            <rect key="frame" x="136" y="53.5" width="239" height="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GP9-Ti-L7N">
+                                            <rect key="frame" x="136" y="74.5" width="239" height="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="IDZ-3D-09C" firstAttribute="top" secondItem="8LA-ee-62S" secondAttribute="bottom" constant="4" id="0iU-a0-HJx"/>
+                                        <constraint firstItem="F52-Rj-dwr" firstAttribute="top" secondItem="glF-b0-PIQ" secondAttribute="top" id="3Jr-hR-glq"/>
+                                        <constraint firstAttribute="bottom" secondItem="F52-Rj-dwr" secondAttribute="bottom" id="7k6-4x-WVe"/>
+                                        <constraint firstItem="TU9-Cu-BPY" firstAttribute="leading" secondItem="F52-Rj-dwr" secondAttribute="trailing" constant="8" id="BbB-H5-mmE"/>
+                                        <constraint firstItem="8LA-ee-62S" firstAttribute="top" secondItem="TU9-Cu-BPY" secondAttribute="bottom" constant="4" id="C9O-QR-qNN"/>
+                                        <constraint firstAttribute="trailing" secondItem="TU9-Cu-BPY" secondAttribute="trailing" id="FTb-Qi-DFN"/>
+                                        <constraint firstItem="GP9-Ti-L7N" firstAttribute="top" secondItem="IDZ-3D-09C" secondAttribute="bottom" constant="4" id="GWr-I4-R3P"/>
+                                        <constraint firstItem="8LA-ee-62S" firstAttribute="leading" secondItem="F52-Rj-dwr" secondAttribute="trailing" constant="8" id="Ge9-3i-Imd"/>
+                                        <constraint firstAttribute="trailing" secondItem="8LA-ee-62S" secondAttribute="trailing" id="Kj7-E8-aKC"/>
+                                        <constraint firstItem="GP9-Ti-L7N" firstAttribute="top" secondItem="IDZ-3D-09C" secondAttribute="bottom" constant="4" id="UEK-7j-K5d"/>
+                                        <constraint firstItem="GP9-Ti-L7N" firstAttribute="leading" secondItem="F52-Rj-dwr" secondAttribute="trailing" constant="8" id="UNF-bC-OtH"/>
+                                        <constraint firstAttribute="trailing" secondItem="GP9-Ti-L7N" secondAttribute="trailing" id="Zhw-kc-D7d"/>
+                                        <constraint firstItem="IDZ-3D-09C" firstAttribute="leading" secondItem="F52-Rj-dwr" secondAttribute="trailing" constant="8" id="aLd-Xw-drP"/>
+                                        <constraint firstItem="8LA-ee-62S" firstAttribute="top" secondItem="TU9-Cu-BPY" secondAttribute="bottom" constant="4" id="jAE-xe-Y1M"/>
+                                        <constraint firstItem="TU9-Cu-BPY" firstAttribute="top" secondItem="glF-b0-PIQ" secondAttribute="top" constant="4" id="lfz-fy-jcv"/>
+                                        <constraint firstItem="IDZ-3D-09C" firstAttribute="top" secondItem="8LA-ee-62S" secondAttribute="bottom" constant="4" id="rQe-Oq-1jR"/>
+                                        <constraint firstItem="F52-Rj-dwr" firstAttribute="leading" secondItem="glF-b0-PIQ" secondAttribute="leading" id="rQm-RN-C1N"/>
+                                        <constraint firstAttribute="trailing" secondItem="IDZ-3D-09C" secondAttribute="trailing" id="tlo-zy-Y2Z"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="categoryLabel" destination="TU9-Cu-BPY" id="10G-Vg-qmm"/>
+                                    <outlet property="equipmentLabel" destination="IDZ-3D-09C" id="5iQ-Tk-rTL"/>
+                                    <outlet property="exerciseImageView" destination="F52-Rj-dwr" id="2de-74-TNH"/>
+                                    <outlet property="musclesLabel" destination="GP9-Ti-L7N" id="1wH-Qu-y81"/>
+                                    <outlet property="nameLabel" destination="8LA-ee-62S" id="qt3-KU-9EZ"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -35,7 +95,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Vk-ij-mAR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="103" y="135"/>
+            <point key="canvasLocation" x="101.59999999999999" y="134.48275862068968"/>
         </scene>
     </scenes>
 </document>
