@@ -13,14 +13,20 @@ class ExercisesTableViewController: UITableViewController {
     private let reuseIdentifier = "exerciseCell"
     
     var musclesList = [Muscle]()
+    var categoriesList = [Category]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let w = Muscles.fetchJson() {
-            musclesList = w.results!
+        if let m = Muscles.fetchJson() {
+            musclesList = m.results ?? []
         }
-        print(musclesList)
+//        print(musclesList)
+        
+        if let c = Categories.fetchJson() {
+            categoriesList = c.results ?? []
+        }
+        print(categoriesList)
     }
 
     // MARK: - Table view data source
